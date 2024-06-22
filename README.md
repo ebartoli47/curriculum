@@ -4,7 +4,7 @@ Este es mi curriculum.
 
 ## Comenzando 🚀
 
-Clickee a la derecha en **Deployments** y aprete en el link. Sino puede acceder aqui --> [https://ebartoli47.github.io/portfolio/](https://ebartoli47.github.io/curriculum/).
+Clickee a la derecha en **Deployments** y aprete en el link. Sino puede acceder aqui --> [https://ebartoli47.github.io/curriculum/](https://ebartoli47.github.io/curriculum/).
 
 ## Autores ✒️
 
