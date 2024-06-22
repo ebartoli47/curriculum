@@ -148,9 +148,10 @@ section#proyectos img {
 .listproy{
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
 }
 
-.portfoliomodelo{
+.contenedorcarousel{
     display: flex;
     align-items: center;
     flex-direction: column;
