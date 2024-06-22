@@ -1,3 +1,7 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap');
+</style>
+
 /* CSS */
 * {
     margin: 0;
@@ -13,12 +17,14 @@ body {
     background-color: #f4f4f4;
     color: #333;
     font-size: 14px;
+    margin: 0;
+    padding: 0;
 }
 
 header {
     background: #3f51b5;
     color: #fff;
-    padding: 1rem 0;
+    padding: 2rem 0;
     text-align: center;
     position: sticky;
     top: 0;
@@ -29,7 +35,7 @@ header nav ul {
     list-style: none;
     display: flex;
     justify-content: center;
-    gap: 1rem;
+    padding: 0;
     flex-wrap: wrap;
 }
 
@@ -41,6 +47,34 @@ header nav ul li a {
     color: #fff;
     text-decoration: none;
     font-weight: bold;
+}
+
+/* Estilos para el menú desplegable (hamburguesa) en móviles */
+.menu-toggle {
+    display: block;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    position: absolute;
+    top: 0.75rem;
+    right: 1rem;
+}
+
+.menu-toggle:hover {
+    color: #ccc;
+}
+
+/* Ocultar el botón de menú en pantallas grandes */
+@media (min-width: 768px) {
+    .menu-toggle {
+        display: none;
+    }
+
+    header nav ul {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+    }
 }
 
 main {
@@ -105,6 +139,73 @@ section#inicio img {
     margin-top: 1rem;
 }
 
+section#proyectos img {
+    max-width: 300px;
+    margin-top: 1rem;
+    height: auto;
+}
+
+.listproy{
+    display: flex;
+    flex-direction: row;
+}
+
+.portfoliomodelo{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    flex: auto;
+    justify-content: center;
+}
+
+.carousel-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.carousel {
+    max-width: calc(50% - 10px);
+    position: relative;
+}
+
+.slides {
+    display: flex;
+    overflow-x: hidden;
+}
+
+.slides img {
+    width: 100%;
+    height: auto;
+}
+
+button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.prev {
+    left: 0;
+}
+
+.next {
+    right: 0;
+}
+
+
+
 footer {
     background: #333;
     color: #fff;
@@ -123,10 +224,20 @@ footer {
     header nav ul {
         flex-direction: column;
         align-items: center;
+        position: relative;
+        display: none; /* Oculta inicialmente el menú en dispositivos pequeños */
+    }
+
+    header nav ul.active {
+        display: flex; /* Muestra el menú cuando está activo */
     }
 
     header nav ul li {
         margin: 0.5rem 0;
+    }
+
+    .menu-toggle {
+        display: block;
     }
 
     main {

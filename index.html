@@ -5,11 +5,93 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Laureano Bartoli - Currículum</title>
     <link rel="stylesheet" href="css/styles.css">
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navMenu = document.querySelector('header nav ul');
+
+    // Función para abrir y cerrar el menú
+    function toggleMenu() {
+        navMenu.classList.toggle('active');
+    }
+
+    // Evento de clic en el botón de menú
+    menuToggle.addEventListener('click', function(event) {
+        event.stopPropagation(); // Detener la propagación para evitar conflictos
+
+        if (navMenu.classList.contains('active')) {
+            navMenu.classList.remove('active'); // Cerrar el menú si está abierto
+        } else {
+            navMenu.classList.add('active'); // Abrir el menú si está cerrado
+        }
+    });
+
+    // Evento de clic en un enlace dentro del menú
+    navMenu.querySelectorAll('li a').forEach(function(item) {
+        item.addEventListener('click', function() {
+            navMenu.classList.remove('active'); // Cerrar el menú al hacer clic en un enlace
+        });
+    });
+
+    // Evento de clic fuera del menú para cerrarlo
+    document.addEventListener('click', function(event) {
+        if (!navMenu.contains(event.target) && !menuToggle.contains(event.target)) {
+            navMenu.classList.remove('active'); // Cerrar el menú si se hace clic fuera de él o del botón de menú
+        }
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Obtener todos los carruseles en la página
+    const carousels = document.querySelectorAll('.carousel');
+
+    // Iterar sobre cada carrusel
+    carousels.forEach((carousel, index) => {
+        const prevBtn = carousel.querySelector('.prev');
+        const nextBtn = carousel.querySelector('.next');
+        const slides = carousel.querySelector('.slides');
+        const images = slides.querySelectorAll('img');
+
+        let currentIndex = 0;
+
+        // Función para mostrar la imagen actual en el carrusel específico
+        function showSlide(index) {
+            // Ocultar todas las imágenes del carrusel
+            images.forEach(img => img.style.display = 'none');
+            // Mostrar la imagen en el índice actual del carrusel
+            images[index].style.display = 'block';
+        }
+
+        // Mostrar la primera imagen del carrusel al cargar la página
+        showSlide(currentIndex);
+
+        // Evento para avanzar a la siguiente imagen en el carrusel
+        nextBtn.addEventListener('click', function() {
+            currentIndex++;
+            if (currentIndex >= images.length) {
+                currentIndex = 0; // Volver al principio si llegamos al final
+            }
+            showSlide(currentIndex);
+        });
+
+        // Evento para retroceder a la imagen anterior en el carrusel
+        prevBtn.addEventListener('click', function() {
+            currentIndex--;
+            if (currentIndex < 0) {
+                currentIndex = images.length - 1; // Ir al final si estamos al principio
+            }
+            showSlide(currentIndex);
+        });
+    });
+});
+
+    </script>
 </head>
 <body>
     <header>
         <nav>
-            <ul>
+            <div class="menu-toggle" onclsick="toggleMenu()">☰</div>
+            <ul id="menu">
                 <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#sobre-mi">Sobre Mí</a></li>
                 <li><a href="#educacion">Educación</a></li>
@@ -32,6 +114,7 @@
             <h2>Sobre Mí</h2>
             <p>Fecha de Nacimiento: 15/11/2001</p>
             <p>Dirección: Avellaneda</p>
+            <h3>Objetivo Laboral</h3>
             <p>Busco una oportunidad en el área de Help Desk en
                 la industria IT para aplicar mis habilidades
                 técnicas y brindar soporte eficiente. Además,
@@ -63,7 +146,30 @@
         </section>
         <section id="proyectos">
             <h2>Proyectos</h2>
-            <p>Descripción de proyectos relevantes.</p>
+            <div class="listproy">
+                <div class="portfoliomodelo">
+                    <h3>Imitacion de un Portfolio Modelo</h3>
+                    <div class="carousel">
+                        <div class="slides">
+                            <img src="img/porfoliomodelo.png" alt="Imagen 1">
+                            <img src="img/porfoliomodelo2.png" alt="Imagen 2">
+                        </div>
+                        <button class="prev">❮</button>
+                        <button class="next">❯</button>
+                    </div>
+                </div>
+                <div class="portfoliomodelo">
+                    <h3>Imitacion de un Portfolio Modelo</h3>
+                    <div class="carousel">
+                        <div class="slides">
+                            <img src="img/porfoliomodelo.png" alt="Imagen 1">
+                            <img src="img/porfoliomodelo2.png" alt="Imagen 2">
+                        </div>
+                        <button class="prev">❮</button>
+                        <button class="next">❯</button>
+                    </div>
+                </div>
+            </div>
         </section>
         <section id="habilidades">
             <h2>Habilidades Técnicas</h2>
